@@ -1,0 +1,296 @@
+Linux Learning Notes - Day 1
+1. Navigation
+Current directory
+pwd
+
+Example:
+
+/home/varadraj/Documents/Linux/linux_course
+List files
+ls
+Change directory
+cd Documents
+cd Linux
+cd ..
+cd ~
+Tab Completion
+
+Instead of typing:
+
+cd Documents
+
+Type:
+
+cd Doc<TAB>
+
+Linux completes it automatically.
+
+2. Creating Files & Folders
+
+Create folder
+
+mkdir backend
+
+Create file
+
+touch app.py
+3. Copy, Move, Rename
+
+Copy
+
+cp app.py main.py
+
+Rename
+
+mv readme.md README.md
+
+Move
+
+mv main.py backup/
+4. Delete
+
+Delete file
+
+rm hello.txt
+
+Delete empty folder
+
+rmdir backup
+
+Delete folder recursively
+
+rm -r backup
+
+⚠️ Be careful with rm -r. It permanently deletes files.
+
+5. Read & Edit Files
+
+View file
+
+cat hello.txt
+
+Edit
+
+nano hello.txt
+6. Pipes (|)
+
+A pipe sends the output of one command to another.
+
+Data
+ ↓
+Filter
+ ↓
+Count
+
+Example
+
+grep Apple fruits.txt | wc -l
+
+Pipeline
+
+fruits.txt
+     ↓
+grep Apple
+     ↓
+Apple
+Apple
+Apple
+     ↓
+wc -l
+     ↓
+3
+7. grep
+
+Search text
+
+grep Python students.txt
+
+Output
+
+Rahul Python
+John Python
+Varadraj Python
+8. wc
+
+Count lines
+
+wc -l students.txt
+
+Count words
+
+wc -w students.txt
+
+Count characters
+
+wc -c students.txt
+9. head
+
+First 10 lines
+
+head app.log
+
+First 5
+
+head -5 app.log
+10. tail
+
+Last 10 lines
+
+tail app.log
+
+Last 3
+
+tail -3 app.log
+
+Live logs
+
+tail -f app.log
+
+Stop with
+
+Ctrl + C
+11. sort
+
+Alphabetically sort
+
+sort names.txt
+12. uniq
+
+Remove duplicate consecutive lines
+
+sort names.txt | uniq
+
+Count duplicates
+
+sort names.txt | uniq -c
+13. find
+
+Find Python files
+
+find . -name "*.py"
+
+Find CSS
+
+find . -name "*.css"
+
+Find directories
+
+find . -type d
+
+Find files
+
+find . -type f
+14. Processes
+
+Show all
+
+ps -ef
+
+Find Python
+
+ps -ef | grep python
+
+Kill process
+
+kill PID
+
+Force kill
+
+kill -9 PID
+15. System Monitor
+
+Task Manager equivalent
+
+top
+
+Better version
+
+htop
+Mental Model (Most Important)
+
+Don't think:
+
+"Which command do I use?"
+
+Think:
+
+Where is my data?
+        ↓
+Need to filter?
+        ↓
+Need to count?
+        ↓
+Need to sort?
+
+Example:
+
+Question:
+How many Python students?
+
+students.txt
+      ↓
+grep Python
+      ↓
+wc -l
+
+Command
+
+grep Python students.txt | wc -l
+Cheat Sheet
+Goal	Command
+Show files	ls
+Current folder	pwd
+Change folder	cd
+Create file	touch
+Create folder	mkdir
+Copy	cp
+Move/Rename	mv
+Delete	rm
+Read file	cat
+Edit file	nano
+Search text	grep
+Count lines	wc -l
+First lines	head
+Last lines	tail
+Live logs	tail -f
+Sort	sort
+Remove duplicates	uniq
+Count duplicates	uniq -c
+Find files	find
+Show processes	ps -ef
+Kill process	kill
+Monitor system	top
+Homework (15–20 minutes)
+Create a project structure:
+project/
+├── backend/
+│   ├── app.py
+│   ├── config.py
+│   └── logs/
+│       └── app.log
+├── frontend/
+│   ├── index.html
+│   └── style.css
+└── README.md
+Practice:
+find . -name "*.py"
+find . -type d
+grep Python students.txt
+grep Rahul students.txt | wc -l
+sort names.txt | uniq -c
+tail -5 app.log
+head -3 app.log
+Run a Python script in one terminal, find its PID in another, and stop it with kill.
+Tomorrow's Topics
+
+We'll move into the Linux skills that backend developers use every day:
+
+Environment Variables (PATH, HOME, USER, export)
+Permissions (chmod, chown, sudo)
+SSH (connecting to remote Linux servers like EC2)
+System Services (systemctl, journalctl)
+Bash Scripting (automating repetitive tasks)
+
+These topics connect directly to Python, Docker, CI/CD, and AWS deployments, so you'll start seeing how Linux fits into the complete backend ecosystem.
+
+Enjoy the break—you made solid progress today.
